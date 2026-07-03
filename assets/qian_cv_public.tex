@@ -1,0 +1,107 @@
+% !TEX program = xelatex
+% Public CV — safe for homepage / open links.
+% Internal details (Grok Build workstreams, data volumes, training recipes) omitted.
+
+\documentclass{resume}
+\usepackage{zh_CN-Adobefonts_external} % Simplified Chinese Support using external fonts (./fonts/zh_CN-Adobe/)
+% \usepackage{zh_CN-Adobefonts_internal} % Simplified Chinese Support using system fonts
+% \usepackage{txfonts,xcolor}
+% \newcommand\redheartsuit{\textcolor{red}{\varheartsuit}}
+
+\usepackage{hyperref}
+\hypersetup{colorlinks,breaklinks,
+            urlcolor=[rgb]{0.18,0.18,0.54},
+            linkcolor=[rgb]{0.18,0.18,0.54}}
+
+\usepackage{amssymb}
+\usepackage{marvosym}
+\usepackage{ifsym}
+
+\begin{document}
+\pagenumbering{gobble} % suppress displaying page number
+
+\name{Qian Liu(刘乾)}
+
+\basicInfo{
+  \email{liuqian.sea@gmail.com} \textperiodcentered\
+  % \phone{(+86) 188-1116-0363} \textperiodcentered\
+  % \phone{(+65) 8386-8698} \textperiodcentered\
+  \twitter[SivilTaram]{https://twitter.com/sivil\_taram} \textperiodcentered \
+  \homepage{https://siviltaram.github.io} \textperiodcentered\
+  \github[SivilTaram]{https://www.github.com/SivilTaram}}
+
+\section{\faUsers\ Experience}
+
+\datedsubsection{\textbf{xAI}, Singapore}{$2025.12$ -- Now}
+Member of Technical Staff\\
+Working on coding models and agents, with a focus on data-centric training and evaluation.
+
+\datedsubsection{\textbf{TikTok}, Singapore}{$2024.11$ -- $2025.12$}
+Coding Team Lead\\
+Built a 10+ person coding research team. Focus on code pre-training and agentic reinforcement learning.
+
+\datedsubsection{\textbf{Sea AI Lab}, Singapore}{$2022.7$ -- $2024.11$}
+Research Scientist\\
+Led the development of the Sailor LLM family, with the full pre-training pipeline: data crawling and cleaning, deduplication, data mixture optimization (RegMix), and continual pre-training.
+
+\section{\faGraduationCap\ Education}
+\datedsubsection{\textbf{Beihang University -- Microsoft Research Asia Joint Ph.D. Program}}{$2017.9$ -- $2022.6$}
+Ph.D. in Computer Science and Engineering\\
+Beihang Supervisor: Qinping Zhao $\clubsuit$ MSRA Mentor: Jian-Guang Lou
+\datedsubsection{\textbf{Beihang University}}{$2013.9$ -- $2017.6$}
+B.S. in Computer Science and Technology, Ranking $7$\,/\,$233$
+
+\section{\faLightbulbO\ Research Interests}
+\begin{itemize}[parsep=0.5ex]
+    \item \textbf{Pre-training \& Data}: \textit{Data mixture optimization, data filtering and synthetic data for model training.}
+    \item \textbf{Code Generation}: \textit{Building reliable code models, from pre-training corpora to agentic evaluation.}
+\end{itemize}
+
+\section{\faAnchor\ Selected Projects}
+
+% Grok Build internal details omitted in the public CV.
+% Keep a full/private CV for internal or confidential applications if needed.
+
+\datedsubsection{\textbf{SimpleTIR: End-to-End RL for Multi-Turn Tool-Integrated Reasoning}}{$2025.3$ -- $2025.9$}
+We introduce SimpleTIR, a plug-and-play reinforcement learning algorithm that stabilizes multi-turn Tool-Integrated Reasoning (TIR) training. We identify that training instability in multi-turn TIR is primarily caused by distributional drift from external tool feedback, leading to catastrophic gradient norm explosions. SimpleTIR addresses this by filtering void turns -- turns yielding neither a code block nor a final answer -- from trajectories during policy updates. Starting from the Qwen2.5-7B base model without supervised fine-tuning, SimpleTIR elevates the AIME24 score from 22.1 to 50.5, achieving state-of-the-art performance. The model also discovers diverse reasoning patterns such as self-correction and cross-validation.
+As the \textbf{corresponding author}, I guided the research direction, experimental design, and contributed to the key findings on training dynamics.
+
+\datedsubsection{\textbf{SimpleRL-Zoo: Investigating and Taming Zero RL for Open Base Models}}{$2024.12$ -- $2025.3$}
+We systematically investigate zero reinforcement learning -- applying RL directly on base models without prior supervised fine-tuning -- inspired by the success of DeepSeek-R1. By testing across 10 diverse open base models (Llama3, Mistral, Qwen2.5, etc.), we uncover key design strategies including format rewards and query difficulty control. Notably, we observe the first emergence of verification behavior (``aha moment'') in non-Qwen small models. Our open-source framework SimpleRL-Zoo provides a comprehensive toolkit for zero RL research.
+As a \textbf{co-first author}, I co-led the research direction, experimental design, and contributed to the key findings on training dynamics.
+
+\datedsubsection{\textbf{RegMix: Automated Data Mixture Optimization for Pre-training}}{$2024.2$ -- $2024.7$}
+RegMix formulates pre-training data mixture selection as a regression problem: we train hundreds of small proxy models on diverse random mixtures, fit a regression model from mixture weights to target metrics, and extrapolate to identify the optimal mixture before launching the large run. With only 10\% of the compute of prior methods, RegMix discovers mixtures that outperform human expert selection and DoReMi, and the discovered mixtures transfer reliably from 1M-parameter proxies to billion-scale models. RegMix has been adopted in real production pre-training (e.g., the Sailor model family). As the \textbf{co-first author}, I proposed the original idea and led the project.
+
+\section{\faBook\ Selected Publications}
+\begin{itemize}[parsep=0.5ex]
+    \item Lin Zheng, Xinyu Li, \textbf{Qian Liu}, Xiachong Feng, Lingpeng Kong, \href{https://arxiv.org/abs/2602.04289}{Proxy Compression for Language Modeling.} (ICML-2026)
+    \item Zhenghai Xue$^*$, Longtao Zheng$^*$, \textbf{Qian Liu}\textsuperscript{\Letter}, Yingru Li, Xiaosen Zheng, Zejun Ma, Bo An, \href{https://arxiv.org/abs/2509.02479}{SimpleTIR: End-to-End Reinforcement Learning for Multi-Turn Tool-Integrated Reasoning.} (ICLR-2026)
+    % --- 2025 ---
+    \item \textbf{Qian Liu}$^*$, Xiaosen Zheng$^*$, Niklas Muennighoff, Guangtao Zeng, Longxu Dou, Tianyu Pang, Jing Jiang, Min Lin, \href{https://arxiv.org/abs/2407.01492}{RegMix: Data Mixture as Regression for Language Model Pre-training.} (ICLR-2025 {\color{red}\textbf{Spotlight}}, * = equal contribution)
+    \item Longxu Dou$^*$, \textbf{Qian Liu}$^*$, Fan Zhou$^*$, Changyu Chen$^*$, et al., \href{https://arxiv.org/abs/2502.12982}{Sailor2: Sailing in South-East Asia with Inclusive Multilingual LLMs.} (Preprint-2025, * = equal contribution, \textbf{project lead})
+    \item Tongyao Zhu, \textbf{Qian Liu}\textsuperscript{\Letter}, Haonan Wang, Shiqi Chen, Xiangming Gu, Tianyu Pang, Min-Yen Kan, \href{https://arxiv.org/abs/2503.15450}{SkyLadder: Better and Faster Pretraining via Context Window Scheduling.} (ICML-2025)
+    \item Jinjie Ni, \textbf{Qian Liu}, Longxu Dou, Chao Du, Zili Wang, Hang Yan, Tianyu Pang, Michael Qizhe Shieh, \href{https://arxiv.org/abs/2511.03276}{Diffusion Language Models are Super Data Learners.} (Preprint-2025)
+    \item Weihao Zeng$^*$, Yuzhen Huang$^*$, \textbf{Qian Liu}$^*$, Wei Liu, Keqing He, Zejun Ma, Junxian He, \href{https://arxiv.org/abs/2503.18892}{SimpleRL-Zoo: Investigating and Taming Zero Reinforcement Learning for Open Base Models in the Wild.} (COLM-2025, * = equal contribution)
+    \item Xinyi He, \textbf{Qian Liu}\textsuperscript{\Letter}, Mingzhe Du, Lin Yan, Zhijie Fan, Yiming Huang, Zejian Yuan, Zejun Ma, \href{https://arxiv.org/abs/2507.12415}{SWE-Perf: Can Language Models Optimize Code Performance on Real-World Repositories?} (Preprint-2025)
+    \item Fangyu Lei$^*$, Jixuan Chen$^*$, Yuxiao Ye, Ruisheng Cao, Dongchan Shin, Hongjin Su, Zhaoqing Suo, Hongcheng Gao, Wenjing Hu, Pengcheng Yin, Victor Zhong, Caiming Xiong, Ruoxi Sun, \textbf{Qian Liu}, Sida Wang, Tao Yu, \href{https://arxiv.org/abs/2411.07763}{Spider 2.0: Evaluating Language Models on Real-World Enterprise Text-to-SQL Workflows.} (ICLR-2025 {\color{red}\textbf{Oral}})
+    \item Siming Huang$^*$, Tianhao Cheng$^*$, J.K. Liu, Jiaran Hao, Liuyihan Song, Yang Xu, J. Yang, J.H. Liu, Chenchen Zhang, Linzheng Chai, Ruifeng Yuan, Zhaoxiang Zhang, Jie Fu, \textbf{Qian Liu}, Ge Zhang, Zili Wang, Yuan Qi, Yinghui Xu, Wei Chu, \href{https://arxiv.org/abs/2411.04905}{OpenCoder: The Open Cookbook for Top-Tier Code Large Language Models.} (ACL-2025)
+    % --- 2024 ---
+    \item Chaofan Tao, \textbf{Qian Liu}\textsuperscript{\Letter}, Longxu Dou\textsuperscript{\Letter}, Niklas Muennighoff, Zhongwei Wan, Ping Luo, Min Lin, Ngai Wong, \href{https://arxiv.org/abs/2407.13623}{Scaling Laws with Vocabulary: Larger Models Deserve Larger Vocabularies.} (NeurIPS-2024)
+    \item Chengsong Huang$^*$, \textbf{Qian Liu}$^*$, Bill Yuchen Lin$^*$, Tianyu Pang, Chao Du, Min Lin, \href{https://arxiv.org/abs/2301.03988}{LoraHub: Efficient Cross-Task Generalization via Dynamic LoRA Composition.} (COLM-2024, * = equal contribution)
+    \item Niklas Muennighoff, \textbf{Qian Liu}, Armel Zebaze, Qinkai Zheng, Binyuan Hui, Terry Yue Zhuo, Swayam Singh, Xiangru Tang, Leandro von Werra, Shayne Longpre, \href{https://arxiv.org/abs/2308.07124}{OctoPack: Instruction Tuning Code Large Language Models.} (ICLR-2024 {\color{red}\textbf{Spotlight}})
+    \item Yiheng Xu$^*$, Hongjin Su$^*$, Chen Xing$^*$, Boyu Mi, \textbf{Qian Liu}, Weijia Shi, Binyuan Hui, Fan Zhou, Yitao Liu, Tianbao Xie, Zhoujun Cheng, Siheng Zhao, Lingpeng Kong, Bailin Wang, Caiming Xiong, Tao Yu, \href{https://arxiv.org/abs/2310.06830}{Lemur: Harmonizing Natural Language and Code for Language Agents.} (ICLR-2024 {\color{red}\textbf{Spotlight}}, * = equal contribution)
+    % --- 2023 and earlier ---
+    \item {\includegraphics[scale=0.035]{figure/flow.png}} BigCode, \href{https://arxiv.org/abs/2305.06161}{StarCoder: May the Source be with You!} (TMLR-2023, {\color{red}\textbf{2.3K}} Like in \href{https://huggingface.co/bigcode/starcoder}{HuggingFace Hub})
+    \item Xinyu Pi$^*$, \textbf{Qian Liu}$^*$, Bei Chen, Morteza Ziyadi, Zeqi Lin, Yan Gao, Qiang Fu, Jian-Guang Lou, Weizhu Chen, \href{https://arxiv.org/pdf/2201.11473.pdf}{Reasoning Like Program Executors}. (EMNLP-2022, MLADS-2022 {\color{red}\textbf{Distinguished Contribution Award}},  * = equal contribution)
+    \item \textbf{Qian Liu}, Bei Chen, Jiaqi Guo, Morteza Ziyadi, Zeqi Lin, Weizhu Chen, Jian-Guang Lou,  \href{https://arxiv.org/pdf/2107.07653.pdf}{TAPEX: Table Pre-training via Learning a Neural SQL Executor}. (ICLR-2022)
+\end{itemize}
+
+\section{\faHeartO\ Service \& Awards}
+\datedline{Co-Organizer of Deep Learning for The Third Table Representation Learning Workshop}{$2024$}
+\datedline{KAUST Rising Stars in AI 2024 (30 Worldwide)}{$2024$}
+\datedline{Beijing Outstanding Doctoral Thesis Nomination Awards}{$2023$}
+\datedline{Baidu Scholarship Nomination 2020 (20 Worldwide)}{$2020$}
+\datedline{Graduate Student National Scholarship}{$2019,2021$}
+
+\end{document}
